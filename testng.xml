@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test  name="C:/Users/a923496/Booking">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="testcases.TC01_LocationSearch">
+                <methods>
+                    <include name="searchwithvaliddata_P"/>
+
+                </methods>
+            </class>
+<!--            <class name="testcases.TC02_HotelSelection">-->
+<!--                <methods>-->
+<!--                    <include name="checkHotelSelectionFunctionality_P"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+
+        </classes>
+    </test>
+</suite>
