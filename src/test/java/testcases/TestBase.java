@@ -23,7 +23,7 @@ import static drivers.DriverHolder.setDriver;
 
 @Listeners()
 public class TestBase {
-    WebDriver driver;
+  static   WebDriver driver;
 
     protected static ExtentSparkReporter htmlReporter;
     protected static ExtentReports extent;

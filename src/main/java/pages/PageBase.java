@@ -11,11 +11,10 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-
+import java.util.ArrayList;
 
 
 public class PageBase {
-
 
 
     // long explicit wait
@@ -29,7 +28,6 @@ public class PageBase {
     }
 
 
-
     public static void waitForPageLoad(WebDriver driver) {
         (new WebDriverWait(driver, Duration.ofSeconds(50))).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
@@ -41,34 +39,6 @@ public class PageBase {
         });
     }
 
-    public static WebElement scrollToElement(WebDriver driver, By locator, int timeoutSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-
-        long startTime = System.currentTimeMillis();
-        long timeoutMillis = timeoutSeconds * 1000L;
-
-        while (System.currentTimeMillis() - startTime < timeoutMillis) {
-            try {
-                WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-                if (element.isDisplayed()) {
-                    return element;
-                }
-            } catch (org.openqa.selenium.NoSuchElementException | org.openqa.selenium.TimeoutException e) {
-                // Element not found or not visible yet
-            }
-
-            js.executeScript("window.scrollBy(0, 250);"); // Scroll down
-            try {
-                Thread.sleep(250); // Small delay
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new RuntimeException("Thread interrupted during scroll delay.", e);
-            }
-        }
-
-        throw new org.openqa.selenium.TimeoutException("Element with locator " + locator + " not found or visible within " + timeoutSeconds + " seconds");
-    }
 
     // TODO: Scroll to view Element
     public static void scrollToViewElement(WebDriver driver, WebElement element) {
@@ -77,6 +47,14 @@ public class PageBase {
         actions.perform();
     }
 
+    public static void switchToSecondTab(WebDriver driver, int Index) {
+        ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        if (tabs.size() > 1) {
+            driver.switchTo().window(tabs.get(Index)); // Switch to the second tab (index )
+        } else {
+            System.out.println("Only one tab is open.");
+        }
+    }
 
 
 }

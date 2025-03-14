@@ -21,6 +21,12 @@ public class P01_Home {
 
     private final By location = By.xpath("//input[@name=\"ss\"]");
     private final By alxOption = By.xpath("(//div/ul/li/div/div/div/div[text()='Alexandria Governorate, Egypt'])[1]");
+    //TODO: Choose Check-in and Check-out Dates
+    private final By checkInDay = By.xpath("(//td[@role=\"gridcell\"])[1]");
+    private final By checkoutDay = By.xpath("(//tbody/tr[3]/td[2])[1]");
+    private final By nextMonth = By.xpath("(//div/div/div/button[@aria-label=\"Next month\"])[1]");
+    private final By targetmonth = By.xpath("(//h3)[1]");
+    private final By popup_exit = By.xpath("//button[text()='Decline']");
 
 
     //TODO: define action methods
@@ -33,13 +39,6 @@ public class P01_Home {
         return this;
     }
 
-
-    //TODO: Choose Check-in and Check-out Dates
-    private final By checkInDay = By.xpath("(//td[@role=\"gridcell\"])[1]");
-    private final By checkoutDay = By.xpath("(//tbody/tr[3]/td[2])[1]");
-    private final By nextMonth = By.xpath("(//div/div/div/button[@aria-label=\"Next month\"])[1]");
-    private final By targetmonth=By.xpath("(//h3)[1]");
-    private final By popup_exit=By.xpath("//button[text()='Decline']");
 
     public P01_Home moveToCheckoutMonth() {
         String targetMonthName = "October 2025";
@@ -55,7 +54,6 @@ public class P01_Home {
         }
         return this;
     }
-
 
 
     //TODO: Select Check in Date
@@ -76,25 +74,23 @@ public class P01_Home {
 
     //TODO: Click Search Button
     private final By searchButton = By.xpath("//span[text()='Search']");
-    public P01_Home clickSearchButton() {
+
+    public P01_Home clickSearchButton() throws InterruptedException {
         shortWait(driver).until(ExpectedConditions.visibilityOfElementLocated(this.searchButton));
         driver.findElement(this.searchButton).click();
+
         return this;
     }
 
-    public P01_Home closePopup(){
+    public P01_Home closePopup() {
         longWait(driver).until(ExpectedConditions.visibilityOfElementLocated(this.popup_exit));
         driver.findElement(this.popup_exit).click();
         return this;
     }
-    public Boolean checkindatehomepage(){
+
+    public Boolean checkindatehomepage() {
 
         return driver.findElement(this.checkInDay).isDisplayed();
-    }
-
-    public Boolean checkoutdatehomepage(){
-
-        return driver.findElement(this.checkoutDay).isDisplayed();
     }
 
 
