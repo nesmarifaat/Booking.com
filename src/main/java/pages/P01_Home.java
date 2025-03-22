@@ -16,12 +16,12 @@ public class P01_Home {
         this.driver = driver;
     }
 
-    //TODO: Enter The Location
+    //TODO: Define The Locators
 
 
     private final By location = By.xpath("//input[@name=\"ss\"]");
     private final By alxOption = By.xpath("(//div/ul/li/div/div/div/div[text()='Alexandria Governorate, Egypt'])[1]");
-    //TODO: Choose Check-in and Check-out Dates
+
     private final By checkInDay = By.xpath("(//td[@role=\"gridcell\"])[1]");
     private final By checkoutDay = By.xpath("(//tbody/tr[3]/td[2])[1]");
     private final By nextMonth = By.xpath("(//div/div/div/button[@aria-label=\"Next month\"])[1]");
@@ -88,10 +88,6 @@ public class P01_Home {
         return this;
     }
 
-    public Boolean checkindatehomepage() {
-
-        return driver.findElement(this.checkInDay).isDisplayed();
-    }
 
 
 }

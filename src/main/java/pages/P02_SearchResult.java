@@ -23,7 +23,7 @@ public class P02_SearchResult {
         this.driver = driver;
     }
 
-    private final By closepopup2 = By.xpath("(//button[@aria-label=\"Dismiss sign-in info.\"])[1]");
+//TODO: Define Locators
 
     private final By tragetHotelName = By.xpath("//div[text()='Tolip Hotel Alexandria']");
     private final By loadMoreButton = By.xpath("//span[text()='Load more results']");

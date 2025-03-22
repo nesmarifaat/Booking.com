@@ -40,12 +40,7 @@ public class PageBase {
     }
 
 
-    // TODO: Scroll to view Element
-    public static void scrollToViewElement(WebDriver driver, WebElement element) {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element);
-        actions.perform();
-    }
+
 
     public static void switchToSecondTab(WebDriver driver, int Index) {
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());

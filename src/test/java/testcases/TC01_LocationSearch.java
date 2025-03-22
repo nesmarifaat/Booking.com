@@ -32,21 +32,23 @@ public class TC01_LocationSearch extends TestBase {
     @Test(priority = 1, description = "Search With Valid Location", retryAnalyzer = Retry.class)
     public void searchwithvaliddata_P() throws InterruptedException {
 
-//
+//Enter Desired Location >> Move to Desired Month in the calendar >> Selected Desired Check-in and Checkout dates >> Close Popup >> Click on Search Button
         new P01_Home(driver).enterLocation(location).moveToCheckoutMonth().selectCheckInDate().selectCheckOutDate().closePopup().clickSearchButton();
 
+        //Refresh the browser to close the displaying popup to be able to interact with page elements
+        driver.navigate().refresh();
 
-        //new P02_SearchResult(driver).closePopup2();
-       driver.navigate().refresh();
-
+        //Scroll till found desired Hotel
         new P02_SearchResult(driver).scroll();
+        captureScreenshot(driver, "Hotel Selection");
         Thread.sleep(10000);
         Assert.assertTrue(new P03_BookingDetails(driver).checkindatedetailspage());
         new P03_BookingDetails(driver).selectamout().clickContinueToBookButton();
+        captureScreenshot(driver, "Room Details");
         Thread.sleep(1000);
         Assert.assertTrue(new P04_Reservation(driver).comparehotelname());
-
-        captureScreenshot(driver, "P_Search");
+        //Capture a screenshot
+        captureScreenshot(driver, "Reservation");
 
     }
 

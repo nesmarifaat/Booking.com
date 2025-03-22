@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static pages.PageBase.longWait;
-import static pages.PageBase.switchToSecondTab;
+
 
 public class P03_BookingDetails {
 
@@ -22,29 +22,23 @@ public class P03_BookingDetails {
     }
 
 
-    private final By BedSelection = By.xpath("(//ul[@class=\"rt-bed-types\"])[3]");
+    //TODO: Define Locators
     private final By Amount = By.xpath("(//select)[1]");
     private final By ReserveButton = By.xpath("(//button[@type=\"submit\"])[3]");
 
     private final By SpecialOffer = By.xpath("//span[contains(@class,'hprt-roomtype-icon-link')][normalize-space()='Special Offer - Deluxe Room with City View - Egyptians and Residents Only']");
 
 
-    public P03_BookingDetails selectbed() {
-        driver.findElement(this.BedSelection).click();
-        return this;
-
-    }
-
     public P03_BookingDetails selectamout() {
         // Scroll until the desired hotel is found or max scrolls reached
         int maxScrolls = 20; // Maximum number of scrolls to attempt
-        boolean isHotelFound = false;
+
         for (int i = 0; i < maxScrolls; i++) {
             try {
                 // Check if the hotel element is present
-                WebElement hotelElement = new WebDriverWait(driver, Duration.ofSeconds(1))
+                new WebDriverWait(driver, Duration.ofSeconds(1))
                         .until(ExpectedConditions.presenceOfElementLocated(SpecialOffer));
-                isHotelFound = true;
+
                 System.out.println("Desired hotel found!");
                 Select ChooseAmount = new Select(driver.findElement(this.Amount));
                 ChooseAmount.selectByIndex(2);
@@ -67,6 +61,7 @@ public class P03_BookingDetails {
         return this;
     }
 
+    //Assert that the selected dates from home page are correct in details page
     public Boolean checkindatedetailspage() {
 
         return driver.getPageSource().contains("Wed, Oct 1");
