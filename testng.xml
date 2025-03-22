@@ -16,32 +16,32 @@
     </test>
 
 
-<!--    <test  name="E2E for Hotel Reservation on FireFox">-->
-<!--        <parameter name="browser" value="firefox" />-->
-<!--        <classes>-->
-<!--            <class name="testcases.TC01_LocationSearch">-->
-<!--                <methods>-->
-<!--                    <include name="searchwithvaliddata_P"/>-->
+    <test  name="E2E for Hotel Reservation on FireFox">
+        <parameter name="browser" value="firefox" />
+        <classes>
+            <class name="testcases.TC01_LocationSearch">
+                <methods>
+                    <include name="searchwithvaliddata_P"/>
 
-<!--                </methods>-->
-<!--            </class>-->
-
-
-<!--        </classes>-->
-<!--    </test>-->
+                </methods>
+            </class>
 
 
-<!--    <test  name="E2E for Hotel Reservation on Egde">-->
-<!--        <parameter name="browser" value="edge" />-->
-<!--        <classes>-->
-<!--            <class name="testcases.TC01_LocationSearch">-->
-<!--                <methods>-->
-<!--                    <include name="searchwithvaliddata_P"/>-->
-
-<!--                </methods>-->
-<!--            </class>-->
+        </classes>
+    </test>
 
 
-<!--        </classes>-->
-<!--    </test>-->
+    <test  name="E2E for Hotel Reservation on Egde">
+        <parameter name="browser" value="edge" />
+        <classes>
+            <class name="testcases.TC01_LocationSearch">
+                <methods>
+                    <include name="searchwithvaliddata_P"/>
+
+                </methods>
+            </class>
+
+
+        </classes>
+    </test>
 </suite>
